@@ -296,6 +296,13 @@ fn default() -> embassy_stm32::rcc::Config {
         rcc.sys = Sysclk::PLL1_R;
     }
 
+    #[cfg(context = "st-nucleo-wba55")]
+    {
+        use embassy_stm32::rcc::*;
+
+        rcc.mux.sai1sel = mux::Sai1sel::HSI;
+    }
+
     #[cfg(context = "st-nucleo-wba65ri")]
     {
         use embassy_stm32::rcc::*;
